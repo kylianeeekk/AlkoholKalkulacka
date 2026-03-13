@@ -1,13 +1,13 @@
 body {
   margin: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  font-family: "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #1a1a1a, #0b0b0b);
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   padding: 40px 0;
-  color: white;
+  color: #eaeaea;
 }
 
 .container {
@@ -17,18 +17,19 @@ body {
 
 h1 {
   text-align: center;
-  margin-bottom: 30px;
-  color: #f0f0f0;
-  font-size: 2.5rem;
+  margin-bottom: 35px;
+  font-size: 2.2rem;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(12px);
-  border-radius: 16px;
-  padding: 20px;
+  background: #141414;
+  border: 1px solid #2a2a2a;
+  border-radius: 14px;
+  padding: 22px;
   margin-bottom: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
 }
 
 input,
@@ -36,33 +37,33 @@ select {
   width: 100%;
   padding: 10px;
   margin: 8px 0 15px;
-  border-radius: 8px;
-  border: none;
-  outline: none;
+  border-radius: 6px;
+  border: 1px solid #333;
+  background: #0f0f0f;
+  color: white;
 }
 
 input[type="time"] {
   width: auto;
   padding: 8px;
   margin-left: 10px;
-  font-size: 1rem;
 }
 
 button {
-  padding: 10px 16px;
+  padding: 10px 14px;
   margin: 5px 5px 5px 0;
-  border-radius: 8px;
+  border-radius: 6px;
   border: none;
   cursor: pointer;
-  background: linear-gradient(45deg, #ff9966, #ff5e62);
-  color: white;
+  background: #d4a017;
+  color: black;
   font-weight: 600;
-  transition: all 0.2s ease;
+  transition: 0.2s;
 }
 
 button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  background: #f1c232;
+  transform: translateY(-2px);
 }
 
 .drinkGrid {
@@ -81,49 +82,45 @@ li {
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  background: rgba(255, 255, 255, 0.1);
-  margin: 5px 0;
-  border-radius: 8px;
-  color: #fff;
+  margin: 6px 0;
+  background: #1a1a1a;
+  border-radius: 6px;
+  border: 1px solid #2b2b2b;
 }
 
 .remove {
-  background: #ff4d4d;
-  border: none;
-  padding: 6px 10px;
-  border-radius: 6px;
-  cursor: pointer;
+  background: #7a1c1c;
   color: white;
-  font-weight: bold;
+  padding: 5px 10px;
 }
 
 .remove:hover {
-  background: #cc0000;
+  background: #a82626;
 }
 
 .result {
   text-align: center;
-  font-size: 1.2rem;
-  background: linear-gradient(45deg, #00c6ff, #0072ff);
-  border-radius: 16px;
+  font-size: 1.25rem;
+  background: #111;
+  border: 1px solid #2d2d2d;
+  border-radius: 12px;
   padding: 20px;
-  color: white;
 }
 
 .reset-btn {
   width: 100%;
-  padding: 12px 0;
-  margin-top: 10px;
-  border-radius: 12px;
-  font-size: 1.1rem;
+  padding: 12px;
+  margin-top: 15px;
+  border-radius: 10px;
   font-weight: 700;
-  background: linear-gradient(45deg, #ff4e50, #f00000);
-  border: none;
+  background: #b22222;
   color: white;
-  cursor: pointer;
-  transition: 0.3s ease;
 }
 
 .reset-btn:hover {
-  background: linear-gradient(45deg, #f00000, #a80000);
+  background: #e03b3b;
+}
+
+.ml{
+  text-align: left;
 }

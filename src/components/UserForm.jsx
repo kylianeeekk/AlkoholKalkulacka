@@ -1,5 +1,3 @@
-import React from "react";
-
 function UserForm({
   weight,
   setWeight,
@@ -12,7 +10,7 @@ function UserForm({
 }) {
   return (
     <div className="card">
-      <h2>👤 Uživatel</h2>
+      <h2>Uživatel</h2>
 
       <label>Váha (kg)</label>
       <input
