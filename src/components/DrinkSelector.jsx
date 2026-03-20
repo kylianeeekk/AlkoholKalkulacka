@@ -19,22 +19,13 @@ function DrinkSelector({ addDrink }) {
         onChange={(e) => setSearch(e.target.value)}
       />
 
-      <div className="drinkGrid">
-        {filtered.map((drink, index) => (
-          <button
-            key={index}
-            onClick={() =>
-              addDrink({
-                name: drink.name,
-                alcohol: drink.alcohol,
-                volume: 0
-              })
-            }
-          >
-            {drink.name} ({drink.alcohol}%)
-          </button>
-        ))}
-      </div>
+      <div className="drink-grid">
+  {drinks.map((drink, index) => (
+    <button key={index} onClick={() => addDrink(drink)}>
+      {drink.name}
+    </button>
+  ))}
+</div>
     </div>
   );
 }

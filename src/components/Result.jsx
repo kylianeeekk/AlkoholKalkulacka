@@ -1,8 +1,11 @@
 function Result({ bac, hours }) {
   return (
     <div className="result">
-      <p>Promile: <strong>{bac.toFixed(2)}</strong></p>
-      <p>Střízlivý za: <strong>{hours.toFixed(1)} h</strong></p>
+      <h2>Výsledek</h2>
+      <div className="bac">{bac.toFixed(2)} ‰</div>
+      <div className="time">
+        Střízlivý za cca {hours.toFixed(1)} h
+      </div>
     </div>
   );
 }

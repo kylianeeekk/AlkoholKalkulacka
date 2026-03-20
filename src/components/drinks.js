@@ -66,6 +66,7 @@ const drinks = [
   { name: "Rum Cola", alcohol: 12 },
   { name: "Vodka Red Bull", alcohol: 15 },
   { name: "Whisky Cola", alcohol: 12 },
+  { name: "Desperado", alcohol: 5}
 ];
 
 export default drinks;
