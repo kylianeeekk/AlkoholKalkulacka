@@ -7,38 +7,33 @@ import DrinkList from "./components/DrinkList.jsx";
 import Result from "./components/Result.jsx";
 
 function App() {
-  // osobní údaje
   const [weight, setWeight] = useState(70);
   const [gender, setGender] = useState("male");
   const [startTime, setStartTime] = useState("20:00");
   const [endTime, setEndTime] = useState("22:00");
 
-  // seznam drinků
   const [drinks, setDrinks] = useState([]);
 
-  // přidání drinku
   function addDrink(drink) {
     setDrinks([...drinks, drink]);
   }
 
-  // odstranění drinku
   function removeDrink(index) {
     setDrinks(drinks.filter((_, i) => i !== index));
   }
 
-  // změna objemu
   function updateDrinkVolume(index, volume) {
     setDrinks((prevDrinks) => {
       const newDrinks = [...prevDrinks];
       newDrinks[index] = {
         ...newDrinks[index],
-        volume: Number(volume), // jistota že je číslo
+        volume: Number(volume),
       };
       return newDrinks;
     });
   }
 
-  // reset
+
   function resetCalculator() {
     setDrinks([]);
     setWeight(80);
@@ -47,33 +42,34 @@ function App() {
     setEndTime("23:00");
   }
 
-  // 🧠 VÝPOČET ALKOHOLU (gramy)
   const totalAlcoholGrams = drinks.reduce((sum, drink) => {
-    const volumeMl = Number(drink.volume); // MUSÍ být v ml
+    const volumeMl = Number(drink.volume);
     const alcoholPercent = Number(drink.alcohol);
 
     return sum + volumeMl * (alcoholPercent / 100) * 0.79;
   }, 0);
 
-  // 🧠 Widmarkův vzorec
   const r = gender === "male" ? 0.68 : 0.55;
   const bacRaw = totalAlcoholGrams / (weight * r);
 
-  // 🧠 ČAS PITÍ
   const [startH, startM] = startTime.split(":").map(Number);
   const [endH, endM] = endTime.split(":").map(Number);
 
-  let hours = endH + endM / 60 - (startH + startM / 60);
-  if (hours < 0) hours += 24;
+  const startMinutes = startH * 60 + startM;
+  const endMinutes = endH * 60 + endM;
 
-  // 🧠 ODBOURÁVÁNÍ
-  const burnRate = 0.15; // ‰ za hodinu
+  let diffMinutes = endMinutes - startMinutes;
+  if (diffMinutes < 0) diffMinutes += 24 * 60;
 
-  // aktuální BAC po odečtení času
+  const hours = diffMinutes / 60;
+
+  const burnRate = 0.15;
+
   const currentBac = Math.max(0, bacRaw - burnRate * hours);
 
-  // kolik hodin do vystřízlivění OD TEĎ
   const soberInHours = currentBac / burnRate;
+
+  const totalTimeToSober = bacRaw / burnRate;
 
   return (
     <div className="container">
@@ -105,7 +101,11 @@ function App() {
       </div>
 
       <div className="card">
-        <Result bac={currentBac} hours={soberInHours} />
+        <Result
+          bac={currentBac}
+          hours={soberInHours}
+          totalTime={totalTimeToSober}
+        />
       </div>
 
       <button className="reset-btn" onClick={resetCalculator}>

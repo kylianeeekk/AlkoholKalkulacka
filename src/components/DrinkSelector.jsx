@@ -2,10 +2,9 @@ import { useState } from "react";
 import drinks from "./drinks";
 
 function DrinkSelector({ addDrink }) {
-
   const [search, setSearch] = useState("");
 
-  const filtered = drinks.filter(d =>
+  const filtered = drinks.filter((d) =>
     d.name.toLowerCase().includes(search.toLowerCase())
   );
 
@@ -20,12 +19,16 @@ function DrinkSelector({ addDrink }) {
       />
 
       <div className="drink-grid">
-  {drinks.map((drink, index) => (
-    <button key={index} onClick={() => addDrink(drink)}>
-      {drink.name}
-    </button>
-  ))}
-</div>
+        {filtered.length === 0 ? (
+          <p>Nic nenalezeno</p>
+        ) : (
+          filtered.map((drink, index) => (
+            <button key={index} onClick={() => addDrink(drink)}>
+              {drink.name}
+            </button>
+          ))
+        )}
+      </div>
     </div>
   );
 }

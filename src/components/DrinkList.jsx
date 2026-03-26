@@ -5,21 +5,24 @@ function DrinkList({ drinks, removeDrink, updateDrinkVolume }) {
 
       <ul>
         {drinks.map((drink, index) => (
-          <li key={index}>
-            <span>{drink.name} – </span>
+          <li key={index} className="drink-item">
+            <span>{drink.name} –</span>
 
             <input
               type="number"
-              value={drink.volume || ""}   // pokud je 0, zobraz prázdné
-              placeholder="ml"
-              onChange={(e) => {
-                const val = Number(e.target.value);
-                updateDrinkVolume(index, val);
-              }}
-              style={{ width: "60px", marginRight: "10px" }}
+              className="drink-volume-input"
+              value={drink.volume}
+              onChange={(e) =>
+                updateDrinkVolume(index, e.target.value)
+              }
             />
 
-            <button className="remove" onClick={() => removeDrink(index)}>
+            <span>ml</span>
+
+            <button
+              className="remove"
+              onClick={() => removeDrink(index)}
+            >
               X
             </button>
           </li>
